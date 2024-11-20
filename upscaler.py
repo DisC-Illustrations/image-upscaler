@@ -7,13 +7,20 @@ from RealESRGAN.model import RealESRGAN
 
 
 def setup_model():
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device_name = "cpu"
+    if torch.cuda.is_available():
+        device_name = "cuda"
+    elif torch.backends.mps.is_available():
+        device_name = "mps"
+
+    device = torch.device(device_name)
+    print(f"Device: {device}")
     model = RealESRGAN(device, scale=4)
     model.load_weights('weights/RealESRGAN_x4.pth', download=True)
     return model
 
 
-def upscale_images(input_dir):
+def upscale_images(input_dir, model):
     model = setup_model()
     output_dir = Path(input_dir) / "upscaled"
     output_dir.mkdir(exist_ok=True)
@@ -61,11 +68,14 @@ def process_input_directories():
     for dir_path in dirs_to_process:
         print(f"- {dir_path.name}")
 
+    model = setup_model()
+
     # Verarbeite jedes Verzeichnis
     for dir_idx, dir_path in enumerate(tqdm(dirs_to_process, desc="Verzeichnisse", unit="Dir")):
         print(f"\nVerzeichnis {dir_idx + 1}/{total_dirs}")
-        upscale_images(dir_path)
+        upscale_images(dir_path, model)
 
 
 if __name__ == "__main__":
+    # supress warnings
     process_input_directories()

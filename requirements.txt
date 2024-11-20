@@ -7,4 +7,5 @@ accelerate
 # triton on Windows for xformers: pip install https://huggingface.co/r4ziel/xformers_pre_built/resolve/main/triton-2.0.0-cp310-cp310-win_amd64.whl
 pillow
 tqdm
-xformers
+# Real-ESRGAN
+git+https://github.com/sberbank-ai/Real-ESRGAN.git
