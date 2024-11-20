@@ -89,3 +89,6 @@ fabric.properties
 
 # ignore all input images
 input/
+
+# Real-ESRGAN weights
+weights/

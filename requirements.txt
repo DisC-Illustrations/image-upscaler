@@ -1,6 +1,10 @@
-diffusers==0.31.0
-transformers
-torch
+huggingface-hub==0.25.2
+# with an NVIDIA GPU use:
+# pip3 install -U xformers --index-url https://download.pytorch.org/whl/cu124
+# and pip install triton
+torch==2.5.1
+accelerate
+# triton on Windows for xformers: pip install https://huggingface.co/r4ziel/xformers_pre_built/resolve/main/triton-2.0.0-cp310-cp310-win_amd64.whl
 pillow
 tqdm
 xformers
