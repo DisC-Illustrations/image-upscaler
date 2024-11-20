@@ -1,4 +1,6 @@
 diffusers==0.31.0
+transformers
 torch
 pillow
 tqdm
+xformers

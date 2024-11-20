@@ -86,3 +86,6 @@ fabric.properties
 # ignore SQLite database files
 *.sqlite
 *.db
+
+# ignore all input images
+input/
