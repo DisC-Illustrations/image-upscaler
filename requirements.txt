@@ -1,0 +1,4 @@
+diffusers==0.31.0
+torch
+pillow
+tqdm
